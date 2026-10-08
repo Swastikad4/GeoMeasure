@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document id="root_doc">
+    <Schema id="sample_polygon" name="sample_polygon">
+      <SimpleField name="category" type="string"/>
+    </Schema>
+    <Schema id="sample_polygon.schema">
+      <SimpleField name="category" type="string"/>
+    </Schema>
+    <Document id="sample_polygon">
+      <name>sample_polygon</name>
+      <Placemark id="sample_polygon.1">
+        <name>Paris Parc A</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#sample_polygon.schema">
+            <SimpleData name="category">Zone 1</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates>
+                2.3522,48.8566,0
+                2.355,48.8566,0
+                2.355,48.859,0
+                2.3522,48.859,0
+                2.3522,48.8566,0
+              </coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+    </Document>
+  </Document>
+</kml>

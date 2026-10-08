@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document id="root_doc">
+    <Schema id="sample_routes" name="sample_routes">
+      <SimpleField name="type" type="string"/>
+    </Schema>
+    <Schema id="sample_routes.schema">
+      <SimpleField name="type" type="string"/>
+    </Schema>
+    <Document id="sample_routes">
+      <name>sample_routes</name>
+      <Placemark id="sample_routes.1">
+        <name>River Walk Route</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#sample_routes.schema">
+            <SimpleData name="type">Footpath</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <LineString>
+          <coordinates>
+            -0.1278,51.5074,0
+            -0.125,51.509,0
+            -0.12,51.508,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark id="sample_routes.2">
+        <name>Meeting Point</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#sample_routes.schema">
+            <SimpleData name="type">Landmark</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -0.1278,51.5074,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Document>
+  </Document>
+</kml>

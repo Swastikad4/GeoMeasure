@@ -1,0 +1,23 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///./geospatial.db
+      - MAX_FILE_SIZE_MB=25
+      - UPLOAD_DIR=uploads
+    volumes:
+      - ./uploads:/app/uploads
+      - ./backend/geospatial.db:/app/geospatial.db
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
