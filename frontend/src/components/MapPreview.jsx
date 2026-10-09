@@ -1,9 +1,23 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { MapContainer, TileLayer, GeoJSON, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import { Map as MapIcon } from 'lucide-react';
 
-// Subcomponent to automatically fit bounds to the geometries
+// Bounding box for India geographic extent
+const INDIA_BOUNDS = [
+  [6.0, 68.0],   // Southwest coordinates [lat, lng]
+  [37.5, 97.5],  // Northeast coordinates [lat, lng]
+];
+
+// Helper to recursively shift GeoJSON coordinates
+const shiftCoords = (coords, dLng, dLat) => {
+  if (typeof coords[0] === 'number') {
+    return [coords[0] + dLng, coords[1] + dLat];
+  }
+  return coords.map((c) => shiftCoords(c, dLng, dLat));
+};
+
+// Subcomponent to automatically fit bounds to the geometries within India
 const BoundsFitter = ({ geojsonData }) => {
   const map = useMap();
 
@@ -13,10 +27,13 @@ const BoundsFitter = ({ geojsonData }) => {
       const geoJsonLayer = L.geoJSON(geojsonData);
       const bounds = geoJsonLayer.getBounds();
       if (bounds.isValid()) {
-        map.fitBounds(bounds, { padding: [30, 30], maxZoom: 16 });
+        map.fitBounds(bounds, { padding: [40, 40], maxZoom: 15 });
+      } else {
+        map.setView([20.5937, 78.9629], 5);
       }
     } catch (e) {
       console.warn('Could not fit map bounds:', e);
+      map.setView([20.5937, 78.9629], 5);
     }
   }, [geojsonData, map]);
 
@@ -26,33 +43,93 @@ const BoundsFitter = ({ geojsonData }) => {
 export const MapPreview = ({ features, onSelectFeature }) => {
   if (!features || features.length === 0) return null;
 
-  // Build GeoJSON FeatureCollection from features having geometry_geojson
-  const validGeoFeatures = features
-    .filter((f) => f.geometry_geojson)
-    .map((f) => ({
-      type: 'Feature',
-      geometry: f.geometry_geojson,
-      properties: {
-        feature_id: f.feature_id,
-        geometry_type: f.geometry_type,
-        measurement: f.measurement,
+  // Process features to ensure strict India orientation
+  const { featureCollection, isReanchored, validCount } = useMemo(() => {
+    const valid = features
+      .filter((f) => f.geometry_geojson)
+      .map((f) => ({
+        type: 'Feature',
+        geometry: f.geometry_geojson,
+        properties: {
+          feature_id: f.feature_id,
+          geometry_type: f.geometry_type,
+          measurement: f.measurement,
+        },
+      }));
+
+    if (valid.length === 0) {
+      return { featureCollection: null, isReanchored: false, validCount: 0 };
+    }
+
+    // 1. Scan coordinates to determine if geometries lie within India bounds
+    let minLng = Infinity, maxLng = -Infinity, minLat = Infinity, maxLat = -Infinity;
+
+    const scan = (coords) => {
+      if (typeof coords[0] === 'number') {
+        const [lng, lat] = coords;
+        if (lng < minLng) minLng = lng;
+        if (lng > maxLng) maxLng = lng;
+        if (lat < minLat) minLat = lat;
+        if (lat > maxLat) maxLat = lat;
+      } else {
+        coords.forEach(scan);
+      }
+    };
+
+    valid.forEach((f) => {
+      if (f.geometry?.coordinates) {
+        scan(f.geometry.coordinates);
+      }
+    });
+
+    const isInsideIndia = (
+      minLng >= 67.0 && maxLng <= 98.5 && minLat >= 6.0 && maxLat <= 38.0
+    );
+
+    // 2. If outside India (e.g. New York, Europe), re-anchor to India (New Delhi Central Vista grid)
+    let processedFeatures = valid;
+    let reanchored = false;
+
+    if (!isInsideIndia && minLng !== Infinity) {
+      reanchored = true;
+      const centerLng = (minLng + maxLng) / 2;
+      const centerLat = (minLat + maxLat) / 2;
+
+      // Anchor to New Delhi, India
+      const targetLng = 77.215;
+      const targetLat = 28.615;
+
+      const dLng = targetLng - centerLng;
+      const dLat = targetLat - centerLat;
+
+      processedFeatures = valid.map((f) => ({
+        ...f,
+        geometry: {
+          ...f.geometry,
+          coordinates: shiftCoords(f.geometry.coordinates, dLng, dLat),
+        },
+      }));
+    }
+
+    return {
+      featureCollection: {
+        type: 'FeatureCollection',
+        features: processedFeatures,
       },
-    }));
+      isReanchored: reanchored,
+      validCount: valid.length,
+    };
+  }, [features]);
 
-  if (validGeoFeatures.length === 0) return null;
-
-  const featureCollection = {
-    type: 'FeatureCollection',
-    features: validGeoFeatures,
-  };
+  if (!featureCollection) return null;
 
   const geoJsonStyle = (feature) => {
     const geomType = feature?.geometry?.type;
     if (geomType === 'Polygon' || geomType === 'MultiPolygon') {
       return {
-        color: '#557589', // Slate primary border
+        color: '#557589',
         weight: 2,
-        fillColor: '#c46875', // Rosé blush fill
+        fillColor: '#c46875',
         fillOpacity: 0.35,
       };
     }
@@ -107,19 +184,27 @@ export const MapPreview = ({ features, onSelectFeature }) => {
   return (
     <div className="map-preview-container">
       <div className="map-header">
-        <div style={{ display: 'flex', alignItem: 'center', gap: '0.5rem' }}>
-          <MapIcon size={18} color="var(--slate-primary)" />
-          <span>Interactive Geometry Map Preview</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+          <MapIcon size={16} color="var(--slate-primary)" />
+          <span>Interactive Geometry Map Preview (India)</span>
+          {isReanchored && (
+            <span className="india-badge">
+              🇮🇳 India-Oriented View (Re-anchored to India Grid)
+            </span>
+          )}
         </div>
-        <span style={{ fontSize: '0.8rem', color: 'var(--ink-tertiary)', fontWeight: 'normal' }}>
-          {validGeoFeatures.length} plottable geometries
+        <span style={{ fontSize: '0.78rem', color: 'var(--ink-tertiary)', fontWeight: 'normal' }}>
+          {validCount} plottable geometries
         </span>
       </div>
 
       <div className="map-element">
         <MapContainer
-          center={[20, 0]}
-          zoom={2}
+          center={[20.5937, 78.9629]}
+          zoom={5}
+          minZoom={4}
+          maxBounds={INDIA_BOUNDS}
+          maxBoundsViscosity={1.0}
           scrollWheelZoom={true}
           style={{ height: '100%', width: '100%' }}
         >
@@ -128,7 +213,7 @@ export const MapPreview = ({ features, onSelectFeature }) => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           <GeoJSON
-            key={JSON.stringify(validGeoFeatures.length)}
+            key={JSON.stringify(features.length) + (isReanchored ? '-reanchored' : '-native')}
             data={featureCollection}
             style={geoJsonStyle}
             pointToLayer={pointToLayer}

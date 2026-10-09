@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 400" width="100%" height="100%" style="background: #f8fafb; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <!-- Section 1: Minimal SaaS Summary Cards -->
+  <g transform="translate(60, 20)">
+    <!-- Card 1: File -->
+    <g transform="translate(0, 0)">
+      <rect width="230" height="110" rx="8" fill="#ffffff" stroke="#e3e7eb" stroke-width="1"/>
+      <text x="20" y="28" font-size="11" font-weight="600" fill="#788591" letter-spacing="0.5">FILE</text>
+      <!-- Small Outline Icon -->
+      <path d="M198 18 L206 18 L210 22 L210 32 L198 32 Z" fill="none" stroke="#788591" stroke-width="1.2" opacity="0.7"/>
+      <text x="20" y="62" font-size="16" font-weight="600" fill="#192229">delhi_survey.kml</text>
+      <text x="20" y="86" font-size="12" fill="#788591">KML Vector</text>
+    </g>
+
+    <!-- Card 2: Features -->
+    <g transform="translate(250, 0)">
+      <rect width="230" height="110" rx="8" fill="#ffffff" stroke="#e3e7eb" stroke-width="1"/>
+      <text x="20" y="28" font-size="11" font-weight="600" fill="#788591" letter-spacing="0.5">FEATURES</text>
+      <!-- Small Outline Icon -->
+      <path d="M198 22 L204 18 L210 22 L204 26 Z M198 26 L204 30 L210 26" fill="none" stroke="#788591" stroke-width="1.2" opacity="0.7"/>
+      <text x="20" y="62" font-size="20" font-weight="600" fill="#192229">3</text>
+      <text x="20" y="86" font-size="12" fill="#788591">Total Geometries</text>
+    </g>
+
+    <!-- Card 3: CRS -->
+    <g transform="translate(500, 0)">
+      <rect width="230" height="110" rx="8" fill="#ffffff" stroke="#e3e7eb" stroke-width="1"/>
+      <text x="20" y="28" font-size="11" font-weight="600" fill="#788591" letter-spacing="0.5">CRS</text>
+      <!-- Small Outline Icon -->
+      <circle cx="204" cy="24" r="6" fill="none" stroke="#788591" stroke-width="1.2" opacity="0.7"/>
+      <path d="M198 24 L210 24 M204 18 C202 21 202 27 204 30 C206 27 206 21 204 18" fill="none" stroke="#788591" stroke-width="1.2" opacity="0.7"/>
+      <text x="20" y="62" font-size="16" font-weight="600" fill="#192229">EPSG:4326</text>
+      <text x="20" y="86" font-size="12" fill="#788591">Detected Spatial Reference</text>
+    </g>
+
+    <!-- Card 4: Status -->
+    <g transform="translate(750, 0)">
+      <rect width="230" height="110" rx="8" fill="#ffffff" stroke="#e3e7eb" stroke-width="1"/>
+      <text x="20" y="28" font-size="11" font-weight="600" fill="#788591" letter-spacing="0.5">STATUS</text>
+      <!-- Small Outline Icon -->
+      <circle cx="204" cy="24" r="6" fill="none" stroke="#16a34a" stroke-width="1.2"/>
+      <path d="M201 24 L203 26 L207 22" fill="none" stroke="#16a34a" stroke-width="1.2"/>
+      
+      <!-- Minimal Green Status Pill -->
+      <rect x="20" y="46" width="98" height="24" rx="12" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1"/>
+      <circle cx="32" cy="58" r="3" fill="#22c55e"/>
+      <text x="42" y="62" font-size="11" font-weight="500" fill="#15803d">COMPLETED</text>
+      <text x="20" y="86" font-size="12" fill="#788591">Processed Successfully</text>
+    </g>
+  </g>
+
+  <!-- Section 2: Restrained Measurement Overview -->
+  <g transform="translate(60, 150)">
+    <rect width="980" height="225" rx="8" fill="#ffffff" stroke="#e3e7eb" stroke-width="1"/>
+    
+    <text x="24" y="34" font-size="15" font-weight="600" fill="#192229">Measurement Overview</text>
+    <text x="220" y="34" font-size="12" fill="#788591">Calculated Planar &amp; Geodesic Metrics</text>
+    <line x1="24" y1="48" x2="956" y2="48" stroke="#e3e7eb" stroke-width="1"/>
+
+    <!-- Metric 1 -->
+    <g transform="translate(24, 65)">
+      <rect width="170" height="135" rx="6" fill="#f8fafc" stroke="#e3e7eb" stroke-width="1"/>
+      <text x="16" y="26" font-size="11" font-weight="600" fill="#788591" letter-spacing="0.4">POLYGONS COUNT</text>
+      <text x="16" y="68" font-size="28" font-weight="600" fill="#192229">1</text>
+      <text x="16" y="105" font-size="11" fill="#788591">Enclosed parcels</text>
+    </g>
+
+    <!-- Metric 2 -->
+    <g transform="translate(210, 65)">
+      <rect width="215" height="135" rx="6" fill="#f8fafc" stroke="#e3e7eb" stroke-width="1"/>
+      <text x="16" y="26" font-size="11" font-weight="600" fill="#788591" letter-spacing="0.4">TOTAL POLYGON AREA</text>
+      <text x="16" y="68" font-size="20" font-weight="600" fill="#192229">4,065,968.09 <tspan font-size="13" font-weight="500" fill="#788591">m²</tspan></text>
+      <text x="16" y="105" font-size="11" fill="#788591">≈ 4.066 km²</text>
+    </g>
+
+    <!-- Metric 3 -->
+    <g transform="translate(440, 65)">
+      <rect width="160" height="135" rx="6" fill="#f8fafc" stroke="#e3e7eb" stroke-width="1"/>
+      <text x="16" y="26" font-size="11" font-weight="600" fill="#788591" letter-spacing="0.4">LINES COUNT</text>
+      <text x="16" y="68" font-size="28" font-weight="600" fill="#192229">1</text>
+      <text x="16" y="105" font-size="11" fill="#788591">Linear corridors</text>
+    </g>
+
+    <!-- Metric 4 -->
+    <g transform="translate(615, 65)">
+      <rect width="205" height="135" rx="6" fill="#f8fafc" stroke="#e3e7eb" stroke-width="1"/>
+      <text x="16" y="26" font-size="11" font-weight="600" fill="#788591" letter-spacing="0.4">TOTAL LINE LENGTH</text>
+      <text x="16" y="68" font-size="20" font-weight="600" fill="#192229">5,664.32 <tspan font-size="13" font-weight="500" fill="#788591">m</tspan></text>
+      <text x="16" y="105" font-size="11" fill="#788591">≈ 5.664 km</text>
+    </g>
+
+    <!-- Metric 5 -->
+    <g transform="translate(835, 65)">
+      <rect width="120" height="135" rx="6" fill="#f8fafc" stroke="#e3e7eb" stroke-width="1"/>
+      <text x="16" y="26" font-size="11" font-weight="600" fill="#788591" letter-spacing="0.4">POINTS</text>
+      <text x="16" y="68" font-size="28" font-weight="600" fill="#192229">1</text>
+      <text x="16" y="105" font-size="11" fill="#788591">Discrete points</text>
+    </g>
+  </g>
+</svg>

@@ -92,30 +92,33 @@ export const UploadArea = ({ onFileSelect, onAnalyze, selectedFile, isProcessing
 
       <div className="upload-actions">
         <div className="sample-buttons">
-          <span className="sample-label">Quick Test:</span>
+          <span className="sample-label">Quick Test (India):</span>
           <button
             type="button"
             className="btn-sample"
             disabled={isProcessing}
             onClick={() => onSelectSample('sample_polygon.kml')}
+            title="Central Vista & India Gate, New Delhi"
           >
-            Sample KML
+            India Gate KML
           </button>
           <button
             type="button"
             className="btn-sample"
             disabled={isProcessing}
             onClick={() => onSelectSample('sample_routes.kml')}
+            title="Marine Drive Coastal Route & Gateway of India, Mumbai"
           >
-            Routes & Points KML
+            Mumbai Routes KML
           </button>
           <button
             type="button"
             className="btn-sample"
             disabled={isProcessing}
             onClick={() => onSelectSample('sample_shapefile.zip')}
+            title="Cubbon Park & Lalbagh, Bengaluru"
           >
-            Shapefile ZIP
+            Bengaluru Shapefile
           </button>
         </div>
 

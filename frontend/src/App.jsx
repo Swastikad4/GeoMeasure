@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import UploadArea from './components/UploadArea';
 import SummaryCards from './components/SummaryCards';
 import MeasurementSummary from './components/MeasurementSummary';
@@ -149,19 +150,7 @@ export function App() {
         />
       )}
 
-      <footer className="app-footer">
-        <p>
-          Geospatial File Measurement &copy; {new Date().getFullYear()} &bull; Built with FastAPI, GeoPandas &amp; React &bull;{' '}
-          <a
-            href="http://localhost:8000/docs"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="footer-link"
-          >
-            API Docs (Swagger)
-          </a>
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 }

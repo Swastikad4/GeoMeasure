@@ -7,24 +7,27 @@
     <Schema id="sample_polygon.schema">
       <SimpleField name="category" type="string"/>
     </Schema>
+    <Schema id="sample_polygon.schema">
+      <SimpleField name="category" type="string"/>
+    </Schema>
     <Document id="sample_polygon">
       <name>sample_polygon</name>
       <Placemark id="sample_polygon.1">
-        <name>Paris Parc A</name>
+        <name><![CDATA[Central Vista & India Gate Zone]]></name>
         <ExtendedData>
           <SchemaData schemaUrl="#sample_polygon.schema">
-            <SimpleData name="category">Zone 1</SimpleData>
+            <SimpleData name="category">New Delhi Heritage Zone</SimpleData>
           </SchemaData>
         </ExtendedData>
         <Polygon>
           <outerBoundaryIs>
             <LinearRing>
               <coordinates>
-                2.3522,48.8566,0
-                2.355,48.8566,0
-                2.355,48.859,0
-                2.3522,48.859,0
-                2.3522,48.8566,0
+                77.21,28.61,0
+                77.235,28.61,0
+                77.235,28.625,0
+                77.21,28.625,0
+                77.21,28.61,0
               </coordinates>
             </LinearRing>
           </outerBoundaryIs>

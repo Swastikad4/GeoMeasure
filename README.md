@@ -8,18 +8,45 @@ The user interface follows a refined aesthetic palette inspired by coastal nauti
 
 ## Table of Contents
 
-1. [Features](#features)
-2. [Tech Stack](#tech-stack)
-3. [Architecture](#architecture)
-4. [File Processing Pipeline](#file-processing-pipeline)
-5. [CRS Handling Strategy](#crs-handling-strategy)
-6. [API Documentation](#api-documentation)
-7. [Local Setup & Running](#local-setup--running)
-8. [Docker Support](#docker-support)
-9. [Design Decisions](#design-decisions)
-10. [Testing](#testing)
-11. [What Was Learned](#what-was-learned)
-12. [Future Scope](#future-scope)
+1. [Application Screenshots](#application-screenshots)
+2. [Features](#features)
+3. [Tech Stack](#tech-stack)
+4. [Architecture](#architecture)
+5. [File Processing Pipeline](#file-processing-pipeline)
+6. [CRS Handling Strategy](#crs-handling-strategy)
+7. [API Documentation](#api-documentation)
+8. [Local Setup & Running](#local-setup--running)
+9. [Docker Support](#docker-support)
+10. [Design Decisions](#design-decisions)
+11. [Testing](#testing)
+12. [What Was Learned](#what-was-learned)
+13. [Future Scope](#future-scope)
+14. [Author](#author)
+15. [License](#license)
+
+---
+
+## Application Screenshots
+
+### 1. Ingestion & Upload Dashboard
+Drag & drop interface supporting `.kml` and Shapefile `.zip` archives with fast one-click sample datasets.
+
+![Upload Dashboard](docs/screenshots/01-upload-dashboard.svg)
+
+### 2. File Metadata & Metric Measurement Overview
+Automated CRS detection (e.g. `EPSG:32643` UTM 43N), status indicators, and live metric aggregation ($m^2$, $km^2$, meters, and kilometers).
+
+![Analytics and Measurements Overview](docs/screenshots/02-analysis-overview.svg)
+
+### 3. Interactive Leaflet Map Preview (India Subcontinent)
+Leaflet map showing dynamic feature vector layers, bounding-box auto-fit, and interactive popups with metric details over Indian landmarks.
+
+![Interactive Geometry Map Preview](docs/screenshots/03-interactive-indian-map.svg)
+
+### 4. Extracted Features Inspection & Clean Footer
+Tabular inspection with search filtering, per-geometry metric calculations, and the clean modern footer.
+
+![Extracted Features Inspection and Footer](docs/screenshots/04-feature-inspection-and-footer.svg)
 
 ---
 
@@ -322,3 +349,19 @@ All 11 unit & integration tests verify:
 - **Background Celery / Redis Workers**: Offloading ultra-large multi-gigabyte GIS datasets to asynchronous background workers.
 - **PostgreSQL / PostGIS Storage**: Enterprise-grade spatial indexing and complex spatial intersections.
 - **Additional Geometry Metrics**: Perimeter calculation, polygon centroid analysis, bounding box extents, and elevation profile extraction for 3D KML features.
+
+---
+
+## 🧕 💻 Author
+
+**Swastika Dey**
+
+- **GitHub**: [SWASTIKA DEY](https://github.com/Swastikad4)
+- **LinkedIn**: [SWASTIKA DEY](https://www.linkedin.com/in/swastika-dey-a9315628a/?isSelfProfile=true)
+
+---
+
+## 📄 License
+
+This project is for educational and development purposes.
+

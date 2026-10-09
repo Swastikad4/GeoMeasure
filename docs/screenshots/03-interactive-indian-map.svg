@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 500" width="100%" height="100%" style="background: #f8fafb; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <g transform="translate(60, 20)" filter="url(#shadow)">
+    <rect width="975" height="460" rx="14" fill="#ffffff" stroke="#d2d7dc" stroke-width="1"/>
+
+    <!-- Map Header -->
+    <g transform="translate(25, 25)">
+      <path d="M4 6 L10 3 L16 6 L22 3 L22 17 L16 20 L10 17 L4 20 Z M10 3 L10 17 M16 6 L16 20" fill="none" stroke="#557589" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="32" y="16" font-size="15" font-weight="700" fill="#192229">Interactive Geometry Map Preview (India Subcontinent View)</text>
+      <text x="925" y="16" text-anchor="end" font-size="12" fill="#788591">3 plottable geometries</text>
+    </g>
+
+    <!-- Map Canvas (Simulated OpenStreetMap Cartography over India / Delhi NCR) -->
+    <g transform="translate(25, 55)">
+      <clipPath id="mapClip">
+        <rect width="925" height="380" rx="10"/>
+      </clipPath>
+      <g clip-path="url(#mapClip)">
+        <!-- Base Land -->
+        <rect width="925" height="380" fill="#e5e3df"/>
+
+        <!-- Urban Land Blocks & Parks -->
+        <rect x="0" y="0" width="925" height="380" fill="#f2efe9"/>
+        <path d="M120 40 L380 30 L450 180 L200 240 Z" fill="#d9ebd0" opacity="0.65"/>
+        <path d="M500 120 L750 90 L820 320 L580 350 Z" fill="#e6e1d8"/>
+
+        <!-- River Yamuna Water Feature -->
+        <path d="M780 0 C740 80, 710 160, 730 250 C750 320, 790 350, 840 380 L880 380 L880 0 Z" fill="#aad3df"/>
+        <text x="760" y="210" font-size="11" font-style="italic" fill="#588e9f" transform="rotate(70 760 210)">Yamuna River</text>
+
+        <!-- Street Grid -->
+        <path d="M0 120 L925 100 M0 220 L925 240 M0 310 L925 300" stroke="#ffffff" stroke-width="4"/>
+        <path d="M220 0 L250 380 M480 0 L460 380 M680 0 L660 380" stroke="#ffffff" stroke-width="4"/>
+        <path d="M0 180 L925 180 M350 0 L350 380" stroke="#fbd9a5" stroke-width="6"/>
+
+        <!-- City Labels -->
+        <text x="350" y="90" font-size="14" font-weight="700" fill="#444444">Connaught Place</text>
+        <text x="480" y="270" font-size="16" font-weight="700" fill="#2d3748">Central Delhi</text>
+        <text x="490" y="290" font-size="11" fill="#718096">National Capital Region, India</text>
+
+        <!-- Polygon Feature: Central Vista & India Gate Zone -->
+        <polygon points="380,180 580,180 580,310 380,310" fill="#c46875" fill-opacity="0.38" stroke="#557589" stroke-width="2.5"/>
+        <text x="480" y="245" text-anchor="middle" font-size="12" font-weight="700" fill="#a14855">Central Vista Zone (4,065,968 m²)</text>
+
+        <!-- LineString Feature: Coastal / Radial Transit Corridor -->
+        <polyline points="220,340 380,260 540,160 680,60" fill="none" stroke="#557589" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+        <text x="290" y="315" font-size="11" font-weight="600" fill="#3f5a6c">Radial Corridor (5,664 m)</text>
+
+        <!-- Point Feature: Landmark / India Gate Benchmark -->
+        <circle cx="580" cy="245" r="8" fill="#557589" stroke="#ffffff" stroke-width="2.5"/>
+        <circle cx="580" cy="245" r="14" fill="none" stroke="#c46875" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+        <!-- Feature Inspection Popup -->
+        <g transform="translate(420, 95)" filter="url(#shadow)">
+          <path d="M0 0 L200 0 C204 0 208 4 208 8 L208 72 C208 76 204 80 200 80 L114 80 L104 90 L94 80 L8 80 C4 80 0 76 0 72 Z" fill="#ffffff" stroke="#d2d7dc" stroke-width="1"/>
+          <text x="14" y="22" font-size="12" font-weight="700" fill="#192229">Feature #2: Heritage Polygon</text>
+          <text x="14" y="40" font-size="11" font-weight="600" fill="#557589">MultiPolygon • EPSG:32643</text>
+          <text x="14" y="62" font-size="13" font-weight="700" fill="#c46875">4,065,968.09 m²</text>
+        </g>
+
+        <!-- Leaflet Zoom Controls -->
+        <g transform="translate(18, 18)">
+          <rect width="28" height="56" rx="4" fill="#ffffff" stroke="#cccccc" stroke-width="1" filter="url(#shadow)"/>
+          <text x="14" y="20" text-anchor="middle" font-size="18" font-weight="700" fill="#444444">+</text>
+          <line x1="4" y1="28" x2="24" y2="28" stroke="#eeeeee" stroke-width="1"/>
+          <text x="14" y="48" text-anchor="middle" font-size="18" font-weight="700" fill="#444444">−</text>
+        </g>
+
+        <!-- OpenStreetMap Attribution Badge -->
+        <g transform="translate(735, 355)">
+          <rect width="180" height="18" rx="3" fill="#ffffff" fill-opacity="0.85"/>
+          <text x="6" y="13" font-size="10" fill="#333333">Leaflet | © OpenStreetMap contributors</text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
