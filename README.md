@@ -29,24 +29,24 @@ The user interface follows a refined aesthetic palette inspired by coastal nauti
 ## Application Screenshots
 
 ### 1. Ingestion & Upload Dashboard
-Drag & drop interface supporting `.kml` and Shapefile `.zip` archives with fast one-click sample datasets.
+Drag & drop interface supporting `.kml` and Shapefile `.zip` archives with quick-test sample datasets.
 
-![Upload Dashboard](docs/screenshots/01-upload-dashboard.svg)
+![Upload Dashboard](docs/screenshots/01-upload-dashboard.png)
 
 ### 2. File Metadata & Metric Measurement Overview
-Automated CRS detection (e.g. `EPSG:32643` UTM 43N), status indicators, and live metric aggregation ($m^2$, $km^2$, meters, and kilometers).
+Automated CRS detection, status indicators, and live metric aggregation ($m^2$, $km^2$, meters, and kilometers) in a clean SaaS layout.
 
-![Analytics and Measurements Overview](docs/screenshots/02-analysis-overview.svg)
+![Analytics and Measurements Overview](docs/screenshots/02-analysis-overview.png)
 
-### 3. Interactive Leaflet Map Preview (India Subcontinent)
-Leaflet map showing dynamic feature vector layers, bounding-box auto-fit, and interactive popups with metric details over Indian landmarks.
+### 3. Interactive Leaflet Map Preview (India)
+Leaflet map showing dynamic feature vector layers, bounding-box auto-fit, and interactive popups with metric details over India.
 
-![Interactive Geometry Map Preview](docs/screenshots/03-interactive-indian-map.svg)
+![Interactive Geometry Map Preview](docs/screenshots/03-interactive-indian-map.png)
 
 ### 4. Extracted Features Inspection & Clean Footer
-Tabular inspection with search filtering, per-geometry metric calculations, and the clean modern footer.
+Tabular inspection with search filtering, per-geometry metric calculations, and the simple modern footer.
 
-![Extracted Features Inspection and Footer](docs/screenshots/04-feature-inspection-and-footer.svg)
+![Extracted Features Inspection and Footer](docs/screenshots/04-feature-inspection-and-footer.png)
 
 ---
 
